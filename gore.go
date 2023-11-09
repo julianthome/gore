@@ -45,7 +45,7 @@ func (g *Gore) Run() error {
 	s := g.Session
 	s.autoImport = g.autoImport
 
-	fmt.Fprintf(g.errWriter, "gore version %s  :help for help\n", Version)
+	//fmt.Fprintf(g.errWriter, "gore version %s  :help for help\n", Version)
 
 	if g.extFiles != "" {
 		extFiles := strings.Split(g.extFiles, ",")
