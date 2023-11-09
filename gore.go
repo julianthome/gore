@@ -58,7 +58,7 @@ func (g *Gore) Run() error {
 		}
 	}
 
-	rl := newContLiner(promptDefault)
+	rl := newContLiner(g.defaultPrompt)
 	defer rl.Close()
 
 	var historyFile string
