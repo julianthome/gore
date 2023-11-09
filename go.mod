@@ -1,4 +1,4 @@
-module github.com/x-motemen/gore
+module github.com/julianthome/gore
 
 go 1.19
 
