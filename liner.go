@@ -34,7 +34,7 @@ func (cl *contLiner) promptString() string {
 		return promptContinue + strings.Repeat(indent, cl.depth)
 	}
 
-	return promptDefault
+	return cl.defaultPrompt 
 }
 
 func (cl *contLiner) Prompt() (string, error) {
