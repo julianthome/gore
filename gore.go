@@ -17,6 +17,8 @@ type Gore struct {
 	extFiles             string
 	packageName          string
 	outWriter, errWriter io.Writer
+	defaultPrompt        string
+	Session              *Session
 }
 
 // New Gore
@@ -25,16 +27,22 @@ func New(opts ...Option) *Gore {
 	for _, opt := range opts {
 		opt(g)
 	}
+
+	s, err := NewSession(g.outWriter, g.errWriter)
+	if err != nil {
+		panic(err)
+	}
+	g.Session = s
+
 	return g
 }
 
 // Run ...
 func (g *Gore) Run() error {
-	s, err := NewSession(g.outWriter, g.errWriter)
-	defer s.Clear()
-	if err != nil {
-		return err
-	}
+	//s, err := NewSession(g.outWriter, g.errWriter)
+	defer g.Session.Clear()
+
+	s := g.Session
 	s.autoImport = g.autoImport
 
 	fmt.Fprintf(g.errWriter, "gore version %s  :help for help\n", Version)
@@ -50,7 +58,7 @@ func (g *Gore) Run() error {
 		}
 	}
 
-	rl := newContLiner()
+	rl := newContLiner(promptDefault)
 	defer rl.Close()
 
 	var historyFile string

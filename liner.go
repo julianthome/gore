@@ -18,14 +18,15 @@ const (
 
 type contLiner struct {
 	*liner.State
-	buffer string
-	depth  int
+	buffer        string
+	depth         int
+	defaultPrompt string
 }
 
-func newContLiner() *contLiner {
+func newContLiner(defaultPrompt string) *contLiner {
 	rl := liner.NewLiner()
 	rl.SetCtrlCAborts(true)
-	return &contLiner{State: rl}
+	return &contLiner{State: rl, defaultPrompt: defaultPrompt}
 }
 
 func (cl *contLiner) promptString() string {

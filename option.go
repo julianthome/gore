@@ -6,6 +6,13 @@ import "io"
 type Option func(*Gore)
 
 // AutoImport option
+func DefaultPrompt(defaultPrompt string) Option {
+	return func(g *Gore) {
+		g.defaultPrompt = defaultPrompt
+	}
+}
+
+// AutoImport option
 func AutoImport(autoImport bool) Option {
 	return func(g *Gore) {
 		g.autoImport = autoImport
