@@ -6,6 +6,7 @@ require (
 	github.com/motemen/go-quickfix v0.0.0-20230925231438-5cf0001766ff
 	github.com/peterh/liner v1.2.2
 	github.com/stretchr/testify v1.3.0
+	github.com/x-motemen/gore v0.5.7
 	golang.org/x/text v0.13.0
 	golang.org/x/tools v0.13.0
 )
